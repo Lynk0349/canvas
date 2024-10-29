@@ -106,7 +106,6 @@ class ImageEditor:
                 self.original_image = cv2.cvtColor(self.original_image, cv2.COLOR_BGRA2RGBA)
 
             self.image = self.original_image.copy()
-            # self.update_transparency()  # Update transparency based on alpha value
             self.display_image()
 
     def update_transparency(self):
@@ -131,9 +130,9 @@ class ImageEditor:
                 # difference[(diff_image[:, :, 0] != 0) | (diff_image[:, :, 1] != 0) | (diff_image[:, :, 2] != 0)] = 255
 
                 # save mask only
-                self.image = cv2.cvtColor(self.image, cv2.COLOR_RGBA2BGR)
+                self.image_cv = cv2.cvtColor(self.image, cv2.COLOR_RGBA2BGR)
                 # cv2.imwrite(file_path, difference)
-                cv2.imwrite(file_path, self.image)
+                cv2.imwrite(file_path, self.image_cv)
                 print(f"Save a mask: {file_path}")
 
     def start_drawing(self, event):
